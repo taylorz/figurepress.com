@@ -11,6 +11,12 @@ const HeroImages = [
     publication: "Figures",
     caption: "Mockup, Detail 2" 
   },
+  {
+    imageUrl: "http://irmaboom.nl/images/image12.jpg",
+    textColor: "",
+    publication: "Figures",
+    caption: "Mockup, Detail 3" 
+  },
 ]
 
 export default HeroImages
