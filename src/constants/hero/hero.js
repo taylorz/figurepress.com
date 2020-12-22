@@ -1,7 +1,7 @@
 const HeroImages = [
   {
-    imageUrl: "http://irmaboom.nl/images/image5.jpg",
-    textColor: "light",
+    imageUrl: "http://irmaboom.nl/images/image2.jpg",
+    textColor: "",
     publication: "Figures",
     caption: "Mockup, Detail 1" 
   },
