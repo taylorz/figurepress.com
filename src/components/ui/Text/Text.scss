@@ -1,0 +1,17 @@
+@import "../../../styles/styles.scss";
+
+.text {
+  display: inline-block;
+  font-family: $primaryFont;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  &.bold {
+    font-weight: $fontWeightBold;
+  }
+  &.paragraph {
+    margin-bottom: $lineHeight;
+  }
+  &.light {
+    color: $fontColorLight;
+  }
+}
