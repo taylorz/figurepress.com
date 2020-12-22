@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
+import LazyLoad from 'react-lazyload';
 import './Hero.scss';
 import Section from '../Section/Section'
 import Text from '../ui/Text/Text'
@@ -18,8 +19,12 @@ const Hero = ({}) => {
 
   return (
     <Section className="hero">
-      
-      <div className="hero-background" style={{backgroundImage: `url(${HeroImages[currentImage].imageUrl})`}}/>
+
+      <div className="hero-background">
+        <LazyLoad>
+          <img src={HeroImages[currentImage].imageUrl}/>
+        </LazyLoad>
+      </div>
 
       <Grid container spacing={2}>
         <Grid item xs={12} sm={3}>
