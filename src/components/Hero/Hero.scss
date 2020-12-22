@@ -2,8 +2,6 @@
 
 .hero {
   .hero-background {
-    height: 100vh;
-    width: 100vw;
     top: 0;
     bottom: 0;
     right: 0;
@@ -11,8 +9,9 @@
     position: absolute;
     overflow: hidden;
     background-position: center;
-    background-size: cover;
+    background-size: 100vw 100vw; //oddly fixes background animations stretching images
+    background-repeat: no-repeat;
     z-index: -1;
-  @include transitionRegular;
+    @include transitionRegular;
   }
 }
