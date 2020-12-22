@@ -10,7 +10,7 @@ const Hero = ({}) => {
 
   useEffect(() => {
     const next = (currentImage + 1) % HeroImages.length;
-    const id = setTimeout(() => setCurrentImage(next), 1000);
+    const id = setTimeout(() => setCurrentImage(next), 5000);
     return () => clearTimeout(id);
   }, [currentImage]);
 

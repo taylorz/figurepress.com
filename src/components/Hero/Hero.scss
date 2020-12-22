@@ -9,9 +9,12 @@
     position: absolute;
     overflow: hidden;
     background-position: center;
-    background-size: 100vw 100vw; //oddly fixes background animations stretching images
+    background-size: 100vw 100vw;
     background-repeat: no-repeat;
     z-index: -1;
-    @include transitionRegular;
+    @include breakpoint(sm) {
+      background-size: 100vh 100vh;
+    }
+    transition: background-image $timing ease;
   }
 }
