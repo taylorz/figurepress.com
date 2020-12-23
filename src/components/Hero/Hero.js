@@ -10,7 +10,7 @@ const Hero = ({}) => {
   const [imgsLoaded, setImgsLoaded] = useState(false)
   const [isCurrentImage, setIsCurrentImage] = useState(0);
 
-  const slideTime = 3000
+  const slideTime = 5000
 
   useEffect(() => {
     const loadImage = image => {
@@ -22,7 +22,6 @@ const Hero = ({}) => {
           setTimeout(() => {
             resolve(image.imageUrl)
           }, slideTime)
-
         loadImg.onerror = err => reject(err)
       })
     }
@@ -31,18 +30,15 @@ const Hero = ({}) => {
       .then(() => setImgsLoaded(true))
       .catch(err => console.log("Failed to load images", err))
 
-    const next = (isCurrentImage + 1) % HeroImages.length;
-    const id = setTimeout(() => setIsCurrentImage(next), isCurrentImage === 0 ? slideTime*2 : slideTime);
-    return () => clearTimeout(id);
       
-  }, [imgsLoaded, isCurrentImage])
-      
+  }, [])
 
-  // useEffect(() => {
-  //   const next = (isCurrentImage + 1) % HeroImages.length;
-  //   const id = setTimeout(() => setIsCurrentImage(next), isCurrentImage === 0 ? slideTime*2 : slideTime);
-  //   return () => clearTimeout(id);
-  // }, [isCurrentImage])
+
+  useEffect(() => {
+    const next = (isCurrentImage + 1) % HeroImages.length;
+    const id = setTimeout(() => setIsCurrentImage(next), slideTime);
+    return () => clearTimeout(id);
+  }, [isCurrentImage])
 
 
   const currentTextLight = HeroImages[isCurrentImage].isLight
@@ -51,8 +47,8 @@ const Hero = ({}) => {
   return (
     <Section className="hero">
 
-    {imgsLoaded ? 
-      <>
+    {/* {imgsLoaded ? 
+      <> */}
         <TransitionGroup>
             <CSSTransition
               key={currentImage.imageUrl}
@@ -61,9 +57,7 @@ const Hero = ({}) => {
               timeout={{enter: 500, exit: 500}}
             >
               <div className="hero-background">
-                {/* <LazyLoad> */}
                   <img alt="" src={currentImage.imageUrl}/>
-                {/* </LazyLoad> */}
               </div>
             </CSSTransition>
         </TransitionGroup>
@@ -96,14 +90,14 @@ const Hero = ({}) => {
           </Grid>
         </Grid>
       </Grid>
-      </>
-    :
-    <Grid container justify="center" alignItems="center" style={{height: "100%"}}>
+      {/* </>
+    : */}
+    {/* <Grid container justify="center" alignItems="center" style={{height: "100%"}}>
       <Grid item>
         <Text>Figure Press</Text>
       </Grid>
-    </Grid>
-    }
+    </Grid> */}
+    {/* } */}
 
     </Section>
   )
