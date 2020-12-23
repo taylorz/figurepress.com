@@ -37,7 +37,7 @@ const Hero = ({}) => {
     const next = (isCurrentImage + 1) % HeroImages.length;
     const id = setTimeout(() => setIsCurrentImage(next), isCurrentImage === 0 ? slideTime*2 : slideTime);
     return () => clearTimeout(id);
-  }, [isCurrentImage])
+  }, [imgsLoaded ? isCurrentImage : 0])
 
 
   const currentTextLight = HeroImages[isCurrentImage].isLight
