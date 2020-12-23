@@ -37,7 +37,7 @@ const Hero = ({}) => {
       // .then(() => clearTimeout(id))
       .catch(err => console.log("Failed to load images", err))
       
-  }, [])
+  }, [isCurrentImage])
       
 
   // useEffect(() => {
