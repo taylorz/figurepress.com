@@ -37,14 +37,6 @@ const Hero = ({}) => {
       .catch(err => console.log("Failed to load images", err))
       
   }, [isCurrentImage])
-      
-
-  // useEffect(() => {
-  //   const next = (isCurrentImage + 1) % HeroImages.length;
-  //   const id = setTimeout(() => setIsCurrentImage(next), isCurrentImage === 0 ? slideTime*2 : slideTime);
-  //   return () => clearTimeout(id);
-  // }, [isCurrentImage])
-
 
   const currentTextLight = HeroImages[isCurrentImage].isLight
   const currentImage = HeroImages[isCurrentImage]
@@ -99,7 +91,16 @@ const Hero = ({}) => {
     :
     <Grid container justify="center" alignItems="center" style={{height: "100%"}}>
       <Grid item>
-        <Text>Figure Press</Text>
+        <TransitionGroup>
+          <CSSTransition
+            key={imgsLoaded}
+            appear={true}
+            classNames="image-transition"
+            timeout={{enter: 500, exit: 500}}
+          >
+            <Text>Figure Press</Text>
+          </CSSTransition>
+        </TransitionGroup>
       </Grid>
     </Grid>
     }
