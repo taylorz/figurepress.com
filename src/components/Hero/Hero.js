@@ -34,10 +34,10 @@ const Hero = ({}) => {
   }, [])
       
   useEffect(() => {
-    const next = (isCurrentImage + 1) % HeroImages.length;
+    const next = imgsLoaded ? (isCurrentImage + 1) % HeroImages.length : 0;
     const id = setTimeout(() => setIsCurrentImage(next), isCurrentImage === 0 ? slideTime*2 : slideTime);
     return () => clearTimeout(id);
-  }, [imgsLoaded ? isCurrentImage : 0])
+  }, [isCurrentImage])
 
 
   const currentTextLight = HeroImages[isCurrentImage].isLight
