@@ -22,6 +22,7 @@
     z-index: -1;
     img {
       max-width: 100%;
+      min-height: 100%;
       @include breakpoint(xs) {
         max-width: none;
         max-height: 100%;

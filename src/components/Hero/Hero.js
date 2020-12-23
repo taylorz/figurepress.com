@@ -30,14 +30,19 @@ const Hero = ({}) => {
     Promise.all(HeroImages.map(image => loadImage(image)))
       .then(() => setImgsLoaded(true))
       .catch(err => console.log("Failed to load images", err))
-      
-  }, [])
-      
-  useEffect(() => {
-    const next = imgsLoaded ? (isCurrentImage + 1) % HeroImages.length : 0;
+
+    const next = (isCurrentImage + 1) % HeroImages.length;
     const id = setTimeout(() => setIsCurrentImage(next), isCurrentImage === 0 ? slideTime*2 : slideTime);
     return () => clearTimeout(id);
-  }, [isCurrentImage])
+      
+  }, [imgsLoaded, isCurrentImage])
+      
+
+  // useEffect(() => {
+  //   const next = (isCurrentImage + 1) % HeroImages.length;
+  //   const id = setTimeout(() => setIsCurrentImage(next), isCurrentImage === 0 ? slideTime*2 : slideTime);
+  //   return () => clearTimeout(id);
+  // }, [isCurrentImage])
 
 
   const currentTextLight = HeroImages[isCurrentImage].isLight
@@ -70,7 +75,7 @@ const Hero = ({}) => {
           </Grid>
           <Grid item xs={12} sm={3}>
             <Text bold light={currentTextLight}>
-              Our debut, self-titled, book <em>Figures</em><br/>is due for release in 2021.
+              Our debut, self-titled, book <em>Figures</em> is due for release in 2021.
             </Text>
           </Grid>
           <Grid item xs={12} sm={6}>
