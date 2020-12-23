@@ -11,7 +11,7 @@ const Hero = ({}) => {
   const [imgsLoaded, setImgsLoaded] = useState(false)
   const [isCurrentImage, setIsCurrentImage] = useState(0);
 
-  const slideTime = 3000
+  const slideTime = 4000
 
   useEffect(() => {
     const loadImage = image => {
@@ -25,7 +25,7 @@ const Hero = ({}) => {
         setTimeout(() => {
           resolve(image.imageUrl)
           const id = setTimeout(() => setIsCurrentImage(next), slideTime);
-        }, slideTime)
+        }, slideTime/2)
         
         loadImg.onerror = err => reject(err)
         
