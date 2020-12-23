@@ -13,32 +13,38 @@ const Hero = ({}) => {
   const slideTime = 3000
 
   useEffect(() => {
+    const next = (isCurrentImage + 1) % HeroImages.length;
+    const id = setTimeout(() => setIsCurrentImage(next), isCurrentImage === 0 ? slideTime*2 : slideTime);
     const loadImage = image => {
       return new Promise((resolve, reject) => {
         const loadImg = new Image()
+
         loadImg.src = image.imageUrl
 
         loadImg.onload = () =>
           setTimeout(() => {
             resolve(image.imageUrl)
           }, slideTime)
+
         loadImg.onerror = err => reject(err)
+
       })
     }
 
     Promise.all(HeroImages.map(image => loadImage(image)))
       .then(() => setImgsLoaded(true))
       .catch(err => console.log("Failed to load images", err))
-
+    
+      return () => clearTimeout(id);
       
-  }, [])
-      
-
-  useEffect(() => {
-    const next = (isCurrentImage + 1) % HeroImages.length;
-    const id = setTimeout(() => setIsCurrentImage(next), isCurrentImage === 0 ? slideTime*2 : slideTime);
-    return () => clearTimeout(id);
   }, [isCurrentImage])
+      
+
+  // useEffect(() => {
+  //   const next = (isCurrentImage + 1) % HeroImages.length;
+  //   const id = setTimeout(() => setIsCurrentImage(next), isCurrentImage === 0 ? slideTime*2 : slideTime);
+  //   return () => clearTimeout(id);
+  // }, [isCurrentImage])
 
 
   const currentTextLight = HeroImages[isCurrentImage].isLight
