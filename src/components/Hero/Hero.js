@@ -62,11 +62,11 @@ const Hero = ({}) => {
               classNames="image-transition"
               timeout={{enter: 500, exit: 500}}
             >
-              <LazyLoad>
                 <div className="hero-background">
+                  <LazyLoad>
                     <img alt="" src={currentImage.imageUrl}/>
+                  </LazyLoad>
                 </div>
-              </LazyLoad>
             </CSSTransition>
         </TransitionGroup>
 
