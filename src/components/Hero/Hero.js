@@ -10,7 +10,7 @@ const Hero = ({}) => {
   const [imgsLoaded, setImgsLoaded] = useState(false)
   const [isCurrentImage, setIsCurrentImage] = useState(0);
 
-  const slideTime = 5000
+  const slideTime = 3000
 
   useEffect(() => {
     const loadImage = image => {
@@ -32,11 +32,11 @@ const Hero = ({}) => {
 
       
   }, [])
-
+      
 
   useEffect(() => {
     const next = (isCurrentImage + 1) % HeroImages.length;
-    const id = setTimeout(() => setIsCurrentImage(next), slideTime);
+    const id = setTimeout(() => setIsCurrentImage(next), isCurrentImage === 0 ? slideTime*2 : slideTime);
     return () => clearTimeout(id);
   }, [isCurrentImage])
 
@@ -47,8 +47,8 @@ const Hero = ({}) => {
   return (
     <Section className="hero">
 
-    {/* {imgsLoaded ? 
-      <> */}
+    {imgsLoaded ? 
+      <>
         <TransitionGroup>
             <CSSTransition
               key={currentImage.imageUrl}
@@ -90,14 +90,14 @@ const Hero = ({}) => {
           </Grid>
         </Grid>
       </Grid>
-      {/* </>
-    : */}
-    {/* <Grid container justify="center" alignItems="center" style={{height: "100%"}}>
+      </>
+    :
+    <Grid container justify="center" alignItems="center" style={{height: "100%"}}>
       <Grid item>
         <Text>Figure Press</Text>
       </Grid>
-    </Grid> */}
-    {/* } */}
+    </Grid>
+    }
 
     </Section>
   )
