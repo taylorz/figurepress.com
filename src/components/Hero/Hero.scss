@@ -3,6 +3,12 @@
 .hero {
   height: calc(100vh - #{$lineHeight * 2});
   position: relative;
+  .hero-text-wrapper {
+    height: 100%;
+    .hero-text-top {
+      height: 0;
+    }
+  }
   .hero-background {
     top: 0;
     bottom: 0;
@@ -15,11 +21,11 @@
     overflow: hidden;
     z-index: -1;
     img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      min-height: 100%;
+      max-width: 100%;
+      @include breakpoint(xs) {
+        max-width: none;
+        max-height: 100%;
+      }
     }
   }
 }

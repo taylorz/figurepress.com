@@ -12,7 +12,7 @@ const HeroImages = [
     caption: "Mockup, Detail 2" 
   },
   {
-    imageUrl: "http://irmaboom.nl/images/image6.jpg",
+    imageUrl: "http://irmaboom.nl/images/image21.jpg",
     isLight: false,
     publication: "Figures",
     caption: "Mockup, Detail 3" 
@@ -21,7 +21,7 @@ const HeroImages = [
     imageUrl: "http://irmaboom.nl/images/image9.jpg",
     isLight: false,
     publication: "Figures",
-    caption: "Mockup, Detail 3" 
+    caption: "Mockup, Detail 4" 
   },
 ]
 

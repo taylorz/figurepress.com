@@ -8,13 +8,38 @@ import Text from '../ui/Text/Text'
 import HeroImages from '../../constants/hero/hero'
 
 const Hero = ({}) => {
+  const [imgsLoaded, setImgsLoaded] = useState(false)
   const [isCurrentImage, setIsCurrentImage] = useState(0);
 
+  const slideTime = 3000
+
+  useEffect(() => {
+    const loadImage = image => {
+      return new Promise((resolve, reject) => {
+        const loadImg = new Image()
+        loadImg.src = image.imageUrl
+        // wait 2 seconds to simulate loading time
+        loadImg.onload = () =>
+          setTimeout(() => {
+            resolve(image.imageUrl)
+          }, slideTime)
+
+        loadImg.onerror = err => reject(err)
+      })
+    }
+
+    Promise.all(HeroImages.map(image => loadImage(image)))
+      .then(() => setImgsLoaded(true))
+      .catch(err => console.log("Failed to load images", err))
+      
+  }, [])
+      
   useEffect(() => {
     const next = (isCurrentImage + 1) % HeroImages.length;
-    const id = setTimeout(() => setIsCurrentImage(next), 10000);
+    const id = setTimeout(() => setIsCurrentImage(next), isCurrentImage === 0 ? slideTime*2 : slideTime);
     return () => clearTimeout(id);
-  }, [isCurrentImage]);
+  }, [isCurrentImage])
+
 
   const currentTextLight = HeroImages[isCurrentImage].isLight
   const currentImage = HeroImages[isCurrentImage]
@@ -22,29 +47,31 @@ const Hero = ({}) => {
   return (
     <Section className="hero">
 
-      <div className="hero-background">
+    {imgsLoaded ? 
+      <>
         <TransitionGroup>
             <CSSTransition
               key={currentImage.imageUrl}
               appear={true}
               classNames="image-transition"
-              timeout={{enter: 1000, exit: 500}}
+              timeout={{enter: 500, exit: 500}}
             >
-              <LazyLoad>
-                <img src={currentImage.imageUrl}/>
-              </LazyLoad>
+              <div className="hero-background">
+                {/* <LazyLoad> */}
+                  <img src={currentImage.imageUrl}/>
+                {/* </LazyLoad> */}
+              </div>
             </CSSTransition>
         </TransitionGroup>
-      </div>
 
-      <Grid container justify="space-between" style={{height: "100%"}}>
-        <Grid container spacing={2}>
+      <Grid container justify="space-between" className="hero-text-wrapper">
+        <Grid container spacing={2} className="hero-text-top">
           <Grid item xs={12} sm={3}>
             <Text light={currentTextLight}>Figure Press</Text>
           </Grid>
           <Grid item xs={12} sm={3}>
             <Text bold light={currentTextLight}>
-              Debut, self-titled, book <em>Figures</em><br/>is due for release in 2021.
+              Our debut, self-titled, book <em>Figures</em><br/>is due for release in 2021.
             </Text>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -54,6 +81,9 @@ const Hero = ({}) => {
             <Text paragraph light={currentTextLight}>
               Figure Press is a collaboration between Matt Ransom and Taylor Zanke.
             </Text>
+            <Text paragraph light={currentTextLight}>
+              <a href="https://instagram.com/figurepress" target="_blank">Instagram</a>
+            </Text>
           </Grid>
         </Grid>
         <Grid container justify="center" alignItems="flex-end">
@@ -62,6 +92,15 @@ const Hero = ({}) => {
           </Grid>
         </Grid>
       </Grid>
+      </>
+    :
+    <Grid container justify="center" alignItems="center" style={{height: "100%"}}>
+      <Grid item>
+        <Text>Figure Press</Text>
+      </Grid>
+    </Grid>
+    }
+
     </Section>
   )
 }
