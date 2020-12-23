@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
-import LazyLoad from 'react-lazyload';
 import { CSSTransition, TransitionGroup} from 'react-transition-group';
 import './Hero.scss';
 import Section from '../Section/Section'
@@ -18,7 +17,7 @@ const Hero = ({}) => {
       return new Promise((resolve, reject) => {
         const loadImg = new Image()
         loadImg.src = image.imageUrl
-        // wait 2 seconds to simulate loading time
+
         loadImg.onload = () =>
           setTimeout(() => {
             resolve(image.imageUrl)
@@ -58,7 +57,7 @@ const Hero = ({}) => {
             >
               <div className="hero-background">
                 {/* <LazyLoad> */}
-                  <img src={currentImage.imageUrl}/>
+                  <img alt="" src={currentImage.imageUrl}/>
                 {/* </LazyLoad> */}
               </div>
             </CSSTransition>
