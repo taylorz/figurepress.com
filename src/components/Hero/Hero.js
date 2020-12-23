@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
+import LazyLoad from 'react-lazyload';
 import { CSSTransition, TransitionGroup} from 'react-transition-group';
 import './Hero.scss';
 import Section from '../Section/Section'
@@ -12,39 +13,38 @@ const Hero = ({}) => {
 
   const slideTime = 3000
 
-  useEffect(() => {
-    const loadImage = image => {
-      return new Promise((resolve, reject) => {
-        const loadImg = new Image()
-        const next = (isCurrentImage + 1) % HeroImages.length;
-        const id = setTimeout(() => setIsCurrentImage(next), isCurrentImage === 0 ? slideTime*2 : slideTime);
-
-        loadImg.src = image.imageUrl
-
-        loadImg.onload = () =>
-          setTimeout(() => {
-            resolve(image.imageUrl)
-            resolve(() => clearTimeout(id))
-          }, slideTime)
-
-        loadImg.onerror = err => reject(err)
-
-      })
-    }
-
-    Promise.all(HeroImages.map(image => loadImage(image)))
-      .then(() => setImgsLoaded(true))
-      // .then(() => clearTimeout(id))
-      .catch(err => console.log("Failed to load images", err))
-      
-  }, [isCurrentImage])
-      
-
   // useEffect(() => {
   //   const next = (isCurrentImage + 1) % HeroImages.length;
-  //   const id = setTimeout(() => setIsCurrentImage(next), isCurrentImage === 0 ? slideTime*2 : slideTime);
-  //   return () => clearTimeout(id);
+  //   // const id = setTimeout(() => setIsCurrentImage(next), slideTime);
+  //   const loadImage = image => {
+  //     return new Promise((resolve, reject) => {
+  //       const loadImg = new Image()
+
+  //       loadImg.src = image.imageUrl
+
+  //       loadImg.onload = () =>
+  //         setTimeout(() => {
+  //           resolve(image.imageUrl)
+  //         }, slideTime)
+
+  //       loadImg.onerror = err => reject(err)
+
+  //     })
+  //   }
+
+  //   Promise.all(HeroImages.map(image => loadImage(image)))
+  //     .then(() => setImgsLoaded(true))
+  //     .then(setTimeout(() => setIsCurrentImage(next), slideTime))
+  //     .catch(err => console.log("Failed to load images", err))
+      
   // }, [isCurrentImage])
+      
+
+  useEffect(() => {
+    const next = (isCurrentImage + 1) % HeroImages.length;
+    const id = setTimeout(() => setIsCurrentImage(next), isCurrentImage === 0 ? slideTime*2 : slideTime);
+    return () => clearTimeout(id);
+  }, [isCurrentImage])
 
 
   const currentTextLight = HeroImages[isCurrentImage].isLight
@@ -53,8 +53,8 @@ const Hero = ({}) => {
   return (
     <Section className="hero">
 
-    {imgsLoaded ? 
-      <>
+    {/* {imgsLoaded ? 
+      <> */}
         <TransitionGroup>
             <CSSTransition
               key={currentImage.imageUrl}
@@ -62,9 +62,11 @@ const Hero = ({}) => {
               classNames="image-transition"
               timeout={{enter: 500, exit: 500}}
             >
-              <div className="hero-background">
-                  <img alt="" src={currentImage.imageUrl}/>
-              </div>
+              <LazyLoad>
+                <div className="hero-background">
+                    <img alt="" src={currentImage.imageUrl}/>
+                </div>
+              </LazyLoad>
             </CSSTransition>
         </TransitionGroup>
 
@@ -96,14 +98,14 @@ const Hero = ({}) => {
           </Grid>
         </Grid>
       </Grid>
-      </>
+      {/* </>
     :
     <Grid container justify="center" alignItems="center" style={{height: "100%"}}>
       <Grid item>
         <Text>Figure Press</Text>
       </Grid>
     </Grid>
-    }
+    } */}
 
     </Section>
   )
