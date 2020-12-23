@@ -24,6 +24,7 @@ const Hero = ({}) => {
         loadImg.onload = () =>
           setTimeout(() => {
             resolve(image.imageUrl)
+            resolve(() => clearTimeout(id))
           }, slideTime)
 
         loadImg.onerror = err => reject(err)
@@ -35,7 +36,7 @@ const Hero = ({}) => {
       .then(() => setImgsLoaded(true))
       .catch(err => console.log("Failed to load images", err))
     
-      return () => clearTimeout(id);
+      // return () => clearTimeout(id);
       
   }, [isCurrentImage])
       
