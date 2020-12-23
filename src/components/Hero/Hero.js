@@ -76,9 +76,10 @@ const Hero = ({}) => {
             <Text paragraph light={currentTextLight}>
               Figure Press is a collaboration between Matt Ransom and Taylor Zanke.
             </Text>
-            <Text paragraph light={currentTextLight}>
+            <Text light={currentTextLight}>
               <a href="https://instagram.com/figurepress" target="_blank">Instagram</a>
             </Text>
+            {/* <Text paragraph light={currentTextLight}>Subscribe to our newsletter</Text> */}
           </Grid>
         </Grid>
         <Grid container justify="center" alignItems="flex-end">
