@@ -1,25 +1,25 @@
 const HeroImages = [
   {
     imageUrl: "http://irmaboom.nl/images/image1.jpg",
-    textColor: "light",
+    isLight: true,
     publication: "Figures",
     caption: "Mockup, Detail 1" 
   },
   {
     imageUrl: "http://irmaboom.nl/images/image2.jpg",
-    textColor: "",
+    isLight: true,
     publication: "Figures",
     caption: "Mockup, Detail 2" 
   },
   {
     imageUrl: "http://irmaboom.nl/images/image6.jpg",
-    textColor: "light",
+    isLight: false,
     publication: "Figures",
     caption: "Mockup, Detail 3" 
   },
   {
     imageUrl: "http://irmaboom.nl/images/image9.jpg",
-    textColor: "",
+    isLight: false,
     publication: "Figures",
     caption: "Mockup, Detail 3" 
   },

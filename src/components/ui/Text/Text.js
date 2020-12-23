@@ -5,7 +5,9 @@ const Text = ({
   children, 
   bold,
   paragraph,
-  light
+  light,
+  italic,
+  center
 }) => (
   <span 
     className={`
@@ -13,6 +15,8 @@ const Text = ({
       ${bold && "bold"}
       ${paragraph && "paragraph"}
       ${light && "light"}
+      ${italic && "italic"}
+      ${center && "center"}
     `}
   >
     {children}

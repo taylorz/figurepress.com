@@ -15,4 +15,10 @@
   &.light {
     color: $fontColorLight;
   }
+  &.italic {
+    font-style: italic;
+  }
+  &.center {
+    text-align: center;
+  }
 }
