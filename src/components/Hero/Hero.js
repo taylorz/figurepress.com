@@ -28,8 +28,8 @@ const Hero = ({}) => {
 
     Promise.all(HeroImages.map(image => loadImage(image)))
       .then(() => {
-        setIsLoading(false)
         loadImage(next)
+        setIsLoading(false)
       })
       .catch(err => console.log("Failed to load images", err))
   }, [isLoading, isCurrentImage])
