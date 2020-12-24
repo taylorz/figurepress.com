@@ -62,3 +62,21 @@ body {
 .image-transition-exit-active {
     @include animation(fadeOut, $timing, $easingCubic, 0s, 1, normal, forwards)
 }
+
+//test
+.test-up-appear {
+    opacity: 0;
+    @include animation(fadeUpIn, $timing, $easingCubic, 0s, 1, normal, forwards)
+}
+.test-up-enter {
+    opacity: 1;
+}
+.test-up-enter-active {
+    @include animation(fadeUpIn, $timing, $easingCubic, 0s, 1, normal, forwards)
+}
+.test-up-exit {
+    opacity: 1;
+}
+.test-up-exit-active {
+    @include animation(fadeUpOut, $timing, $easingCubic, 0s, 1, normal, forwards)
+}

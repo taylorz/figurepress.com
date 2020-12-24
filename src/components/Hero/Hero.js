@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 import Grid from '@material-ui/core/Grid';
-import LazyLoad from 'react-lazyload';
 import { CSSTransition, TransitionGroup} from 'react-transition-group';
 import './Hero.scss';
 import Section from '../Section/Section'
@@ -8,35 +7,33 @@ import Text from '../ui/Text/Text'
 import HeroImages from '../../constants/hero/hero'
 
 const Hero = ({}) => {
-  const [imgsLoaded, setImgsLoaded] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [isCurrentImage, setIsCurrentImage] = useState(0);
-
-  const slideTime = 6000
+  const slideTime = 2000
 
   useEffect(() => {
     const loadImage = image => {
-      const next = (isCurrentImage + 1) % HeroImages.length;
       return new Promise((resolve, reject) => {
         const loadImg = new Image()
         
-        loadImg.src = image.imageUrl
+        loadImg.src = HeroImages[isCurrentImage].imageUrl
         
         loadImg.onload = () =>
         setTimeout(() => {
           resolve(image.imageUrl)
           const id = setTimeout(() => setIsCurrentImage(next), slideTime);
-        }, slideTime/3)
+        }, slideTime*2)
         
         loadImg.onerror = err => reject(err)
         
       })
     }
-
+    const next = (isCurrentImage + 1) % HeroImages.length;
     Promise.all(HeroImages.map(image => loadImage(image)))
-      .then(() => setImgsLoaded(true))
+      .then(() => setIsLoading(false))
       .catch(err => console.log("Failed to load images", err))
       
-  }, [isCurrentImage])
+  }, [isLoading, isCurrentImage])
 
   const currentTextLight = HeroImages[isCurrentImage].isLight
   const currentImage = HeroImages[isCurrentImage]
@@ -44,7 +41,13 @@ const Hero = ({}) => {
   return (
     <Section className="hero">
 
-    {imgsLoaded ? 
+    {isLoading ? 
+      <Grid container justify="center" alignItems="center" style={{height: "100%"}}>
+        <Grid item>
+          <Text>Figure Press</Text>
+        </Grid>
+      </Grid>
+    :
       <>
         <TransitionGroup>
             <CSSTransition
@@ -89,21 +92,6 @@ const Hero = ({}) => {
         </Grid>
       </Grid>
       </>
-    :
-    <Grid container justify="center" alignItems="center" style={{height: "100%"}}>
-      <Grid item>
-        <TransitionGroup>
-          <CSSTransition
-            key={imgsLoaded}
-            appear={true}
-            classNames="image-transition"
-            timeout={{enter: 500, exit: 500}}
-          >
-            <Text>Figure Press</Text>
-          </CSSTransition>
-        </TransitionGroup>
-      </Grid>
-    </Grid>
     }
 
     </Section>

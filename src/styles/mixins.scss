@@ -58,13 +58,13 @@
   }
   100% {
     opacity: 0;
-    -webkit-transform: translateY(-$buffer);
+    -webkit-transform: translateY(-$buffer*5);
   }
 }
 @keyframes fadeUpIn {
   0% {
     opacity: 0;
-    -webkit-transform: translateY($buffer);
+    -webkit-transform: translateY($buffer*5);
   }
   100% {
     opacity: 1;
