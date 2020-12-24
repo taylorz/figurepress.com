@@ -1,9 +1,9 @@
 @import "../../styles/styles.scss";
 
 .hero {
-  height: calc(100vh - #{$lineHeight * 2});
-  // position: relative;
+  height: 100%;
   .hero-text-wrapper {
+    padding: $lineHeight; //this is here, not on section (as it should be) because of the usage of Div100vh component
     height: 100%;
     .hero-text-top {
       height: 0;
