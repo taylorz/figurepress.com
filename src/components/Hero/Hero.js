@@ -19,16 +19,15 @@ const Hero = ({}) => {
         loadImg.onload = () =>
         resolve(image.imageUrl)
         setTimeout(() => {
-          const id = setTimeout(() => setIsCurrentImage(next), slideTime);
         }, slideTime*2)
         loadImg.onerror = err => reject(err)
       })
     }
     const next = (isCurrentImage + 1) % HeroImages.length;
-
+    
     Promise.all(HeroImages.map(image => loadImage(image)))
-      .then(() => {
-        loadImage(next)
+    .then(() => {
+        const id = setTimeout(() => setIsCurrentImage(next), slideTime);
         setIsLoading(false)
       })
       .catch(err => console.log("Failed to load images", err))
