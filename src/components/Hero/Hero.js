@@ -17,8 +17,8 @@ const Hero = ({}) => {
         const loadImg = new Image()
         loadImg.src = HeroImages[isCurrentImage].imageUrl
         loadImg.onload = () =>
-        resolve(image.imageUrl)
         setTimeout(() => {
+          resolve(image.imageUrl)
         }, slideTime)
         loadImg.onerror = err => reject(err)
       })
