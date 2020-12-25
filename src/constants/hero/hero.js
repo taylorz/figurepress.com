@@ -20,13 +20,13 @@ const HeroImages = [
     imageUrl: image3,
     isLight: false,
     publication: "Figures",
-    caption: "Mockup, Detail 2" 
+    caption: "Mockup, Detail 3" 
   },
   {
     imageUrl: image4,
     isLight: true,
     publication: "Figures",
-    caption: "Mockup, Detail 2" 
+    caption: "Mockup, Detail 4" 
   },
 ]
 
