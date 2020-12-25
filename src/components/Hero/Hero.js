@@ -10,7 +10,7 @@ import HeroImages from '../../constants/hero/hero'
 const Hero = ({}) => {
   const [isLoading, setIsLoading] = useState(true)
   const [isCurrentImage, setIsCurrentImage] = useState(0);
-  const slideTime = 2000
+  const slideTime = 8000
   useEffect(() => {
     const loadImage = image => {
       return new Promise((resolve, reject) => {
@@ -19,7 +19,7 @@ const Hero = ({}) => {
         loadImg.onload = () =>
         resolve(image.imageUrl)
         setTimeout(() => {
-        }, slideTime*2)
+        }, slideTime)
         loadImg.onerror = err => reject(err)
       })
     }
