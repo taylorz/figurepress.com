@@ -7,7 +7,7 @@ import image5 from '../../assets/5.png'
 const HeroImages = [
   {
     imageUrl: image1,
-    isLight: false,
+    isLight: true,
     publication: "Figures",
     caption: "Mockup, Detail 1" 
   },
