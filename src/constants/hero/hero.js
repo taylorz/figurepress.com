@@ -8,39 +8,39 @@ import image6 from '../../assets/6.jpg'
 const HeroImages = [
   {
     imageUrl: image1,
-    isLight: true,
+    isLight: false,
     publication: "Figures",
-    caption: "Mockup, Detail 1" 
+    caption: "Figure 1, Mockup" 
   },
   {
     imageUrl: image2,
-    isLight: true,
+    isLight: false,
     publication: "Figures",
-    caption: "Mockup, Detail 2" 
+    caption: "Figure 2, Mockup" 
   },
   {
     imageUrl: image3,
     isLight: false,
     publication: "Figures",
-    caption: "Mockup, Detail 3" 
+    caption: "Figure 3, Mockup" 
   },
   {
     imageUrl: image4,
-    isLight: true,
+    isLight: false,
     publication: "Figures",
-    caption: "Mockup, Detail 4" 
+    caption: "Figure 4, Mockup" 
   },
   {
     imageUrl: image5,
-    isLight: true,
+    isLight: false,
     publication: "Figures",
-    caption: "Mockup, Detail 5" 
+    caption: "TEST!!!!!! IMAGE 5" 
   },
   {
     imageUrl: image6,
-    isLight: true,
+    isLight: false,
     publication: "Figures",
-    caption: "Mockup, Detail 6" 
+    caption: "TEST!!!!!! IMAGE 6" 
   },
 ]
 

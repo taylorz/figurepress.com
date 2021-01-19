@@ -71,7 +71,7 @@ const Hero = ({}) => {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <Text paragraph light={currentTextLight}>
-                  Figure Press is a publishing project which uses the form of the book, and the processes of its production, to develop and sustain practices for thinking, making, and collaborating. Figure Press eagerly examines the process of form-making, of shaping and representing, in the hope of discovering practical tools for stabilizing the everyday demands of artistic practice. Through close collaboration, friendly critique, and often intentionally prolonged conversation, this press strives to provide encouraging and assistive contexts for artists developing delicate new work.
+                Figure Press is a publishing project which uses the form of the book, and the processes of its production, to develop and sustain practices for thinking, making, and collaborating. Rigorously imprecise, and decidedly open-ended, Figure Press eagerly examines the process of bringing delicate new ideas to form. Through close collaboration, friendly critique, and often intentionally prolonged conversation, Figure Press provides a framework to support and sustain artistic development and intellectual curiosity in the face of practical demands.
                 </Text>
                 <Text paragraph light={currentTextLight}>
                   Figure Press is a collaboration between Matt Ransom and Taylor Zanke.
