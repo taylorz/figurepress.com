@@ -10,7 +10,7 @@ import HeroImages from '../../constants/hero/hero'
 const Hero = ({}) => {
   const [isLoading, setIsLoading] = useState(true)
   const [isCurrentImage, setIsCurrentImage] = useState(0);
-  const slideTime = 8000
+  const slideTime = 10000
   useEffect(() => {
     const loadImage = image => {
       return new Promise((resolve, reject) => {
