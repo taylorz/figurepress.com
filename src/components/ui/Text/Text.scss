@@ -1,0 +1,24 @@
+@import "../../../styles/styles.scss";
+
+.text {
+  display: block;
+  font-family: $primaryFont;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  @include transitionRegular;
+  &.bold {
+    font-weight: $fontWeightBold;
+  }
+  &.paragraph {
+    margin-bottom: $lineHeight;
+  }
+  &.light {
+    color: $fontColorLight;
+  }
+  &.italic {
+    font-style: italic;
+  }
+  &.center {
+    text-align: center;
+  }
+}

@@ -1,0 +1,34 @@
+@import "../../styles/styles.scss";
+
+.hero {
+  height: 100%;
+  .hero-text-wrapper {
+    padding: $lineHeight; //this is here, not on section (as it should be) because of the usage of Div100vh component
+    height: 100%;
+    .hero-text-top {
+      height: 0;
+    }
+  }
+  .hero-background {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: -1;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
+    }
+    @include breakpoint(xs) {
+      img {
+        object-fit: contain;
+      }
+    }
+  }
+}
