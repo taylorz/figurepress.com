@@ -74,7 +74,7 @@ const Hero = ({}) => {
                 Figure Press is a publishing project which uses the form of the book, and the processes of its production, to develop and sustain practices for thinking, making, and collaborating. Rigorously imprecise, and decidedly open-ended, Figure Press eagerly examines the process of bringing delicate new ideas to form. Through close collaboration, friendly critique, and often intentionally prolonged conversation, Figure Press provides a framework to support and sustain artistic development and intellectual curiosity in the face of practical demands.
                 </Text>
                 <Text paragraph light={currentTextLight}>
-                  Figure Press is a collaboration between Matt Ransom and Taylor Zanke.
+                  Figure Press is a collaboration between Matthew Ransom and Taylor Zanke.
                 </Text>
                 <Text light={currentTextLight}>
                   <a href="https://instagram.com/figurepress" target="_blank">Instagram</a>
